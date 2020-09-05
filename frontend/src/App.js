@@ -30,9 +30,8 @@ const totalReducer = (acc, item) => {
 const checkoutItems = (total, setTop) => {
   
   const foo = document.getElementById('checkout')
-  foo.style.transition = "all 0.75s ease-in-out";
+  foo.style.transition = "all 0.55s ease-in-out";
   foo.style.position = "absolute";
-
   foo.style.width = "420px";
 
   let top = 0;

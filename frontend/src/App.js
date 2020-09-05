@@ -101,7 +101,7 @@ function App() {
         <OrderSummary />
 
       <h2 className="header"> Market Place </h2>
-      <div className="product-container">
+      <div className={"product-container " + (readyCheckout?"overlay":"") }>
         {
           products.map(item => {
             return <Product id={item.id} name={item.name} price={item.price} image={item.image} updateCart={(e) => {

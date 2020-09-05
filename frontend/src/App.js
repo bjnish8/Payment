@@ -84,21 +84,12 @@ const CheckoutCart = ({chosenItems, totalPrice, readyCheckout, setReadyCheckout}
   )
 }
 
-const OrderSummary = ({}) => {
-  return <div>
- 
-  </div>
-}
-
-
 function App() {
   const [chosenItems, setChosenItems] = useState([{id: 1, name: "jacket", quantity: 2, price: 39.99}])
   const [totalPrice, setTotalPrice] = useState(79.98)
   const [readyCheckout, setReadyCheckout] = useState(false)
   return (
     <React.Fragment>
-        <OrderSummary />
-
       <h2 className="header"> Market Place </h2>
       <div className={"product-container " + (readyCheckout?"overlay":"") }>
         {
@@ -111,7 +102,7 @@ function App() {
           })
         }
       </div>
-      <div id="checkout" className={"order-summary " + (readyCheckout?"readycheckout":"")}>
+      <div id="checkout" className="order-summary">
 
       <CheckoutCart chosenItems={chosenItems} totalPrice={totalPrice} readyCheckout={readyCheckout} setReadyCheckout={setReadyCheckout}/>
       {readyCheckout && <StripeForm total={totalPrice}/>}

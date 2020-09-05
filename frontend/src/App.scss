@@ -7,7 +7,7 @@
 }
 
 .overlay {
-  &::after{
+  &::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -33,7 +33,7 @@
     flex-direction: column;
     align-items: flex-start;
 
-    input{
+    input {
       padding: 5px 0px;
     }
     .item-name {
@@ -60,20 +60,15 @@
   font-size: 32px;
 }
 
-.readycheckout {
-  background: rgb(236, 236, 236);
-  padding: 5px;
-}
-
 .order-summary {
   position: absolute;
   width: 320px;
   left: 50%;
   transform: translate(-50%, 0%);
+  background: rgb(236, 236, 236);
+  padding: 5px 20px;
   .checkout {
-    padding: 10px 20px;
     border-radius: 0px 0px 2px 2px;
-    background: rgb(236, 236, 236);
     .price {
       color: rgb(39, 104, 61);
     }
@@ -90,14 +85,16 @@
         cursor: pointer;
       }
     }
-    .item:not(:last-of-type) {
-      border-bottom: 2px solid rgba(22, 20, 20, 0.418);
-      padding: 10px 0px;
-    }
-    .item:last-of-type {
-      text-align: right;
-      .price {
-        font-weight: bold;
+    .item {
+      &:not(:last-of-type) {
+        border-bottom: 2px solid rgba(22, 20, 20, 0.418);
+        padding: 10px 0px;
+      }
+      &:last-of-type {
+        text-align: right;
+        .price {
+          font-weight: bold;
+        }
       }
     }
   }

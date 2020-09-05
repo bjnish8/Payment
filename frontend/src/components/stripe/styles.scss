@@ -1,0 +1,161 @@
+.CheckoutDiv {
+  text-rendering: optimizeLegibility;
+  padding: 20px;
+
+  form {
+    h4:not(:first-child) {
+      margin-top: 40px;
+    }
+    label {
+      span {
+        color: #353b42;
+        letter-spacing: 1px;
+        font-size: 14px;
+      }
+    }
+    input {
+      width: 100%;
+      &::placeholder {
+        color: #cfd7df;
+      }
+    }
+
+    input:focus,
+    .StripeElement--focus {
+      box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px,
+        rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+      -webkit-transition: all 150ms ease;
+      transition: all 150ms ease;
+    }
+
+    input,
+    .StripeElement {
+      display: block;
+      margin: 6px 0 20px;
+      padding: 10px 14px;
+      font-size: 16px;
+      box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
+        rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+      border: 0;
+      outline: 0;
+      height: 38px;
+      border-radius: 4px;
+      background: white;
+    }
+    .SubmitButton {
+      display: block;
+      font-size: 16px;
+      width: calc(100% - 30px);
+      height: 40px;
+      margin: 40px 15px;
+      background-color: #7795f8;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 100ms ease-in-out;
+      will-change: transform, background-color, box-shadow;
+      border: none;
+      &:active {
+        background-color: #6a6aa0;
+        box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06),
+          0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #32325d;
+        transform: scale(0.99);
+      }
+      &:hover {
+        background-color: #6684e6;
+        color: #fff;
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
+          0 3px 6px rgba(0, 0, 0, 0.08);
+      }
+      &:disabled {
+        opacity: 0.5;
+        cursor: default;
+        background-color: #d6e0ff;
+        box-shadow: none;
+      }
+    }
+
+    .SubmitButton.SubmitButton--error {
+      transform: translateY(20px);
+    }
+    .SubmitButton.SubmitButton--error:active {
+      transform: scale(0.99) translateY(20px);
+    }
+  }
+
+  .FormRow {
+    display: flex;
+    .row-small {
+      width: 30%;
+    }
+
+    .row-large {
+      width: 60%;
+    }
+    label {
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.ErrorMessage {
+  color: rgb(214, 56, 56);
+  display: flex;
+  justify-content: center;
+  padding: 5px 15px;
+  font-size: 13px;
+  margin-top: 0px;
+  width: 100%;
+  transform: translateY(-15px);
+  animation: fade 150ms ease-out;
+  animation-delay: 50ms;
+  animation-fill-mode: forwards;
+  will-change: opacity, transform;
+  svg {
+    margin-right: 10px;
+  }
+}
+
+.Result {
+  margin-top: 50px;
+  text-align: center;
+  animation: fade 200ms ease-out;
+}
+
+.ResultTitle {
+  color: #fff;
+  color: green;
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.ResultMessage {
+  color: #4fabe0;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  line-height: 1.6em;
+  text-align: center;
+}
+
+.ResetButton {
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}

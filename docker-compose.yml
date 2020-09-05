@@ -1,0 +1,44 @@
+version: '3'
+    
+services:
+  db:
+    image: postgres:9.6
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app/backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    links:
+      - db:db
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app/frontend
+      -  /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API=http://localhost:8000
+    depends_on:
+      - backend
+    stdin_open: true
+
+
+volumes:
+  postgres-data:

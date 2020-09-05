@@ -90,15 +90,9 @@ const SplitFieldsForm = ({ total }) => {
   });
   const [inProgress, setInProgress] = useState(false)
 
-  // To point to the input element with error.
-  // Focus on that element if error
-  // Fires whenever formError is changed as provided
-  // in the dependency array
-//   useEffect(() => {
-//     if(formError){
-//         document.getElementById(formError.id).focus()
-//     }
-//   }, [formError])
+  useEffect(() => {
+    setFormError(null)
+  }, [billingDetails])
 
   const userInfoValidate = () => {
       if (billingDetails.name.length === 0){
@@ -189,12 +183,12 @@ const SplitFieldsForm = ({ total }) => {
         <label>
           <span>Full name</span>
           <input name="name" id="name" type="text" placeholder="John Doe" onChange={(e) => {
-              handleBillingChange({email:e.target.value})
+              handleBillingChange({name:e.target.value})
           }}/>
         </label>
         <label>
           <span>Email address</span>
-          <input name="email" id="email" type="email" placeholder="johndoe@email.com" onChange={(e) => {
+          <input name="email" id="email" type="text" placeholder="johndoe@email.com" onChange={(e) => {
               handleBillingChange({email:e.target.value})
           }}/>
         </label>

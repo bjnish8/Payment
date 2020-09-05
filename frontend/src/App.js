@@ -29,8 +29,8 @@ const totalReducer = (acc, item) => {
 
 const checkoutItems = (total, setTop) => {
   
-  const foo = document.getElementById('checkout')
-  foo.style.transition = "all 0.55s ease-in-out";
+  const foo = document.getElementById('ordersummary')
+  foo.style.transition = "all 0.40s linear";
   foo.style.position = "absolute";
   foo.style.width = "420px";
 
@@ -64,9 +64,10 @@ const CheckoutCart = ({chosenItems, totalPrice, readyCheckout, setReadyCheckout}
          <div className="checkout-header"> 
          <h2> Order Summary  </h2>
          <button className="cancel-button" onClick={() => {
-          document.getElementById("checkout").style.width = "320px";
-          document.getElementById("checkout").style.transition = "none";
-          document.getElementById("checkout").style.top = currentTop + "px";
+          const summary = document.getElementById("ordersummary")
+          summary.style.width = "320px";
+          summary.style.transition = "none";
+          summary.style.top = currentTop + "px";
             setReadyCheckout(false)
           }}> X </button>
          </div>}
@@ -102,7 +103,7 @@ function App() {
           })
         }
       </div>
-      <div id="checkout" className="order-summary">
+      <div id="ordersummary" className="order-summary">
 
       <CheckoutCart chosenItems={chosenItems} totalPrice={totalPrice} readyCheckout={readyCheckout} setReadyCheckout={setReadyCheckout}/>
       {readyCheckout && <StripeForm total={totalPrice}/>}

@@ -83,6 +83,7 @@
         font-size: 30px;
         font-weight: bold;
         cursor: pointer;
+        outline: none;
       }
     }
     .item {
@@ -102,4 +103,8 @@
 
 .hidden {
   display: none;
+}
+
+.invisible{
+  visibility: hidden;
 }

@@ -14,7 +14,6 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_SECRET
 const email_regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 const CARD_OPTIONS = {
-  iconStyle: "solid",
   style: {
     base: {
       color: "#32325D",
@@ -55,6 +54,12 @@ const ResetButton = ({ onClick }) => (
     </svg>
   </button>
 );
+
+const Loader = () => <div className="Loader">
+<div className="Spinner"/>
+  <span> Processing Payment... </span>
+</div>
+
 const ErrorMessage = ({ children }) => (
   <div className="ErrorMessage" role="alert">
     <svg width="21" height="21" viewBox="0 0 17 17">
@@ -83,6 +88,7 @@ const SplitFieldsForm = ({ total }) => {
     email: "",
     name: "",
   });
+  const [inProgress, setInProgress] = useState(false)
 
   // To point to the input element with error.
   // Focus on that element if error
@@ -178,7 +184,7 @@ const SplitFieldsForm = ({ total }) => {
     </div>
   ) : (
     <div className="CheckoutDiv">
-      <form onSubmit={handleSubmit}>
+      <form className={inProgress?"invisible":""} onSubmit={handleSubmit}>
         <h4> Personal Details </h4>
         <label>
           <span>Full name</span>
@@ -211,13 +217,18 @@ const SplitFieldsForm = ({ total }) => {
             />
           </label>
         </div>
-
         {formError && <ErrorMessage>{formError.message}</ErrorMessage>}
         {cardError && <ErrorMessage>{cardError.message}</ErrorMessage>}
         <SubmitButton processing={processing} error={cardError} disabled={!stripe}>
           Pay ${total}
         </SubmitButton>
       </form>
+      {inProgress && <Loader />}
+      <button onClick={() => {
+          setInProgress(true)
+          setTimeout(() => {
+          setInProgress(false)
+      }, 2000);}}>Show Spinner </button>
     </div>
   );
 };
